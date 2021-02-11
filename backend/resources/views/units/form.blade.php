@@ -8,5 +8,10 @@
 {{ Form::text('crit_damage_rate', Request::old('crit_damage_rate')) }}
 {{ Form::text('evasion_rate', Request::old('evasion_rate')) }}
 {{ Form::text('hit_chance_rate', Request::old('hit_chance_rate')) }}
+<select name="spell">
+    @foreach($spells as $spell)
+    <option value="{{ $spell->id }}">{{$spell->name}}</option>
+    @endforeach
+</select>
 {{-- More fields... --}}
 <button type="submit">Save</button>

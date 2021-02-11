@@ -8,10 +8,11 @@ use App\Models\Unit;
 
 class UnitController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $units = Unit::get();
-        
-        return response()->json($units, 200);
+
+        return response()->json($units->first()->spells, 200);
     }
 
     /*public function create() {

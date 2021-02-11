@@ -15,11 +15,10 @@ class CreateSpellsTable extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
             $table->id();
+            $table->integer('unit_id')->nullable();
             $table->string('name');
-            $table->integer('reload');
+            $table->integer('cooldown');
             $table->string('type');
-            $table->integer('value');
-            $
             $table->timestamps();
         });
     }
