@@ -23,8 +23,7 @@ class CreateUnitsTable extends Migration
             $table->integer('speed');
             $table->integer('crit_chance_rate');
             $table->integer('crit_damage_rate');
-            $table->integer('evasion_rate');
-            $table->integer('hit_chance_rate');
+            $table->integer('spell_id')->nullable();
             $table->timestamps();
         });
     }

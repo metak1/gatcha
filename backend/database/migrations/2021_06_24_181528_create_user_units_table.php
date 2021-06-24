@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpellsTable extends Migration
+class CreateUserUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSpellsTable extends Migration
      */
     public function up()
     {
-        Schema::create('spells', function (Blueprint $table) {
+        Schema::create('user_units', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('cooldown');
-            $table->string('type');
+            $table->integer('user_id');
+            $table->integer('unit_id');
+            $table->integer('rarity');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateSpellsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spells');
+        Schema::dropIfExists('user_units');
     }
 }

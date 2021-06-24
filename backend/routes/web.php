@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::get('/users', [UserController::class, 'index']);
 Route::resource('units', 'UnitController');
 Route::resource('spells', 'SpellController');
-Route::get('/items', [ItemController::class, 'index']);
+Route::resource('items', 'ItemController');
 
 require __DIR__ . '/auth.php';

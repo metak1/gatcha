@@ -1,6 +1,18 @@
 <template>
   <div class="hello">
       {{ data }}
+
+      <button 
+      @click="pullUnit()"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        PULL UNIT
+      </button>
+
+      <button 
+      @click="equipItem(1)"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        EQUIP ITEM
+      </button>
   </div>
 </template>
 
@@ -16,13 +28,34 @@ export default {
       }
   },
   mounted() {
-    axios.get('http://localhost:8082/api/units').then(response => {
-      // JSON responses are automatically parsed.
-      this.data = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    this.loadUnits()
+  },
+  methods: {
+    pullUnit() {
+      axios.post('http://localhost:8082/api/user_units').then(() => {
+        this.loadUnits()
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    loadUnits() {
+      axios.get('http://localhost:8082/api/user_units').then(response => {
+        // JSON responses are automatically parsed.
+        this.data = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
+    equipItem($itemId) {
+       axios.post('http://localhost:8082/api/user_units/'+ this.data[0].id +'/equip', {'user_item_id': $itemId}).then(() => {
+        this.loadUnits()
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    }
   }
 }
 </script>

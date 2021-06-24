@@ -24,8 +24,6 @@ class SpellController extends Controller
     public function store(Request $request)
     {
         $spell = Spell::create($request->all());
-        $unit = Unit::where('id', $request->input('unit'));
-        $spell->unit()->associate($unit);
 
         return redirect()->route('spells.index');
     }

@@ -16,9 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('bonus_value');
             $table->string('type');
-            $table->boolean('is_percent');
+            $table->integer('rarity');
             $table->timestamps();
         });
     }

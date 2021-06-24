@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Spell;
+use App\Models\UserItem;
 
 class Unit extends Model
 {
@@ -19,12 +20,16 @@ class Unit extends Model
         'speed',
         'crit_chance_rate',
         'crit_damage_rate',
-        'evasion_rate',
-        'hit_chance_rate',
+        'spell_id'
     ];
 
-    public function spells()
+    public function spell()
     {
-        return $this->hasMany(Spell::class);
+        return $this->belongsTo(Spell::class);
+    }
+    
+    public function items()
+    {
+        return $this->hasMany(UserItem::class);
     }
 }

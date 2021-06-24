@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UnitController;
+use App\Http\Controllers\Api\UserUnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('api')->get('/units', [UnitController::class, 'index']);
+Route::middleware('api')->get('/user_units', [UserUnitController::class, 'index']);
+Route::middleware('api')->post('/user_units', [UserUnitController::class, 'store']);
+Route::middleware('api')->post('/user_units/{userUnit}/equip', [UserUnitController::class, 'equip']);
+

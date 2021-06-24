@@ -29,7 +29,7 @@ class UnitController extends Controller
 
         $spell = Spell::where('id', $request->input('spell'))->first();
 
-        $unit->spells()->save($spell);
+        $unit->spell()->associate($spell);
 
         return redirect()->route('units.index');
     }
@@ -44,6 +44,7 @@ class UnitController extends Controller
     public function update(Request $request, Unit $unit)
     {
         $unit_request = $request->except(['_token', '_method']);
+
         Unit::where('id', $unit->id)->update($unit_request);
 
         return redirect()->route('units.index');
